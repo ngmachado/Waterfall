@@ -16,7 +16,8 @@
   "license": "MIT",
   "dependencies": {
     "keccak256": "^1.0.2",
-    "merkletreejs": "^0.2.18"
+    "merkletreejs": "^0.2.18",
+    "truffle": "^5.3.6"
   },
   "devDependencies": {
     "@openzeppelin/contracts": "^4.1.0",
