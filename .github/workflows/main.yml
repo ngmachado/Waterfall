@@ -1,0 +1,52 @@
+name: Coverage
+
+on:
+  push:
+    branches: ["master"]
+
+jobs:
+  build:
+    name: Build and test of master branch
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install and build
+        run: |
+          npm install
+          npm run-script build
+  coverage:
+    name: Run coverage
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+
+      - name: Run coverage test
+        run: |
+          npm install
+          npm run-script build
+          npm run-script test-coverage
+      - name: Create coverage artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage
+          path: |
+            coverage/
+            coverage.json
