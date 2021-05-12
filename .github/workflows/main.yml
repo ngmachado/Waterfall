@@ -1,4 +1,4 @@
-name: CI Canary
+name: Coverage
 
 on:
   push:
