@@ -1,0 +1,28 @@
+{
+  "name": "merkle-drop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "dev": "nodemon -e sol,js -i build -x 'npm test 2>&1'",
+    "build": "truffle compile --all",
+    "test": "truffle test",
+    "test-coverage": "truffle compile --all && truffle run coverage"
+  },
+  "author": "ngmachado",
+  "license": "MIT",
+  "dependencies": {
+    "keccak256": "^1.0.2",
+    "merkletreejs": "^0.2.18"
+  },
+  "devDependencies": {
+    "@openzeppelin/contracts": "^4.1.0",
+    "@openzeppelin/test-helpers": "^0.5.11",
+    "eth-gas-reporter": "^0.2.22",
+    "ganache-time-traveler": "^1.0.15",
+    "solidity-coverage": "^0.7.16"
+  }
+}
