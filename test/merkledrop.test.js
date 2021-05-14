@@ -14,14 +14,14 @@ const soliditySha3 = web3.utils.soliditySha3;
 contract("MerkleDrop - Claims testings", accounts => {
 
     it("Case #0 - Check deployment", async() => {
-        const mintAmount = toWei("1000", "ether");
+        const mintAmount = toWei("1000");
         const erc20 = await tokensFactory.new(mintAmount, {from: accounts[0]});
         const drop = await merkleFactory.new({from:accounts[0]});
         assert.equal((await erc20.balanceOf(accounts[0])).toString(), mintAmount, "minted amount wrong");
     });
 
     it("Case #1 - register multi-users MerkleDrop", async () => {
-        const mintAmount = toWei("1000", "ether");
+        const mintAmount = toWei("1000");
         const erc20 = await tokensFactory.new(mintAmount, {from: accounts[0]});
         const drop = await merkleFactory.new({from:accounts[0]});
         await erc20.approve(drop.address, mintAmount, {from: accounts[0]});
@@ -76,7 +76,7 @@ contract("MerkleDrop - Claims testings", accounts => {
     });
 
     it("Case #2 - register multi-users multi-MerkleDrop", async () => {
-        const mintAmount = toWei("1000", "ether");
+        const mintAmount = toWei("1000");
         const erc20first = await tokensFactory.new(mintAmount, {from: accounts[0]});
         const erc20second = await tokensFactory.new(mintAmount, {from: accounts[0]});
         const drop = await merkleFactory.new({from:accounts[0]});
