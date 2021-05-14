@@ -30,27 +30,31 @@ startTime, endTime - Define the interval for valid claims to be process.
 
 - Create a web interface to operate the smart contract.
 - Make more gas optimizations.
-- Make a proper audit to the project.
+- Make a proper audit to this project.
 
 ## Q/A
 
 (Q): Why?
+
 (A): First merkle distribuion are cool.
 Facilitating the distribuiton of tokens in a mix offchain - onchain settings let projects to easly distribute tokens to a large amount of users.
 Merkle distributions avoid spamming, the user have to claim the tokens he wants.
 
 (Q): This is not the first smart contract doing merkle distribuition...
+
 (A): True, the value of this project in my opinion is to set the infrastruture necessary to make merkle distribuion easy to anybody.
 
 (Q): Can anyone register my token to a drop?
+
 (A): Yes.
 
 (Q): Can i use merkle-drop to make different drops from the **same token and same user set data**?
-(A): No, this version is only capable of making one drop per token + user set data.
+
+(A): No, this version is only capable of making one drop per _user set data_.
 
 (Q): Someone register my token blocking me from making my own drop, can you solve that?
-(A): No, merkle-drop is **literally a permissionless system**. One way to overcome that is to use different set of data, generating a different merkleRoot.
 
+(A): No, merkle-drop is **literally a permissionless system**. One way to overcome that is to use different set of data, generating a different merkleRoot.
 
 ## Limitations
 
