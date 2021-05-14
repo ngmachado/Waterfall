@@ -27,7 +27,6 @@ contract MerkleDistributor is IMerkleDrop {
         external
         override
     {
-
         require(address(config[merkleRoot].token) == address(0), "merkleRoot already register");
         require(startTime < endTime, "wrong dates");
 
@@ -58,8 +57,8 @@ contract MerkleDistributor is IMerkleDrop {
 
         require(
             config[merkleRoot].startTime < block.timestamp
-            && config[merkleRoot].endTime > block.timestamp
-            ,"out of time / wrong merkleTree"
+            && config[merkleRoot].endTime >= block.timestamp
+            ,"out of time / wrong root"
         );
 
         require(!isClaimed(merkleRoot, index), "already claimed");
