@@ -42,7 +42,7 @@ Merkle-drop don't manage funds, for each valid claim will this contract will per
 (Q): Why?
 
 (A): First merkle distribuion are cool.
-Facilitating the distribuiton of tokens in a mix offchain - onchain settings let projects to easly distribute tokens to a large amount of users.
+Facilitating the distribuiton of tokens in a mix offchain - onchain settings let projects to easly distribute tokens to a large number of users.
 Merkle distributions avoid spamming, the user have to claim the tokens he wants.
 
 (Q): This is not the first smart contract doing merkle distribuition...
