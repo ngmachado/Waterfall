@@ -20,11 +20,16 @@ Merkle-drop don't manage funds, for each valid claim will this contract will per
 ## Details and concepts
 
 `drop` - A set of users can claim a particular token.
+
 `merkleRoot` - generated from user set of data, each user claim represent a leaf.
+
 `leaf` - user claim that follow the format: `index account amount`
+
 `token` - ERC20 contract that are making the drop.
+
 `tokensProvider` - account that is feeding the tokens to the drop.
-`startTime`, `endTime` - Define the interval for valid claims to be process.
+
+`startTime`, `endTime` - Define the interval for valid claims to be processed.
 
 ## Next steps
 
