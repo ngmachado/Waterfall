@@ -77,6 +77,8 @@ That define the merkle root is the set of user data, in the case of two token us
 
 Merkle-drop don't manage or hold tokens, if tokenProvider don't approve or doesn't have enough token amount, eventually the claim will revert.
 
+The merkle tree generated from given data can generate a unbalanced tree. We are not adding fake or double information to balance the tree.
+
 ## Kudos
 
 - [merkle-distributor](https://github.com/Uniswap/merkle-distributor)

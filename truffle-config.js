@@ -1,55 +1,73 @@
 module.exports = {
   networks: {
-    // Useful for testing. The `development` name is special - truffle uses it by default
-    // if it's defined here and no other network is specified at the command line.
-    // You should run a client (like ganache-cli, geth or parity) in a separate terminal
-    // tab if you use this network and you must also set the `host`, `port` and `network_id`
-    // options below to some value.
-    //
-    // development: {
-    //  host: "127.0.0.1",     // Localhost (default: none)
-    //  port: 8545,            // Standard Ethereum port (default: none)
-    //  network_id: "*",       // Any network (default: none)
-    // },
-    // Another network with more advanced options...
-    // advanced: {
-    // port: 8777,             // Custom port
-    // network_id: 1342,       // Custom network
-    // gas: 8500000,           // Gas sent with each transaction (default: ~6700000)
-    // gasPrice: 20000000000,  // 20 gwei (in wei) (default: 100 gwei)
-    // from: <address>,        // Account to send txs from (default: accounts[0])
-    // websocket: true        // Enable EventEmitter interface for web3 (default: false)
-    // },
-    // Useful for deploying to a public network.
-    // NB: It's important to wrap the provider as a function.
-    // ropsten: {
-    // provider: () => new HDWalletProvider(mnemonic, `https://ropsten.infura.io/v3/YOUR-PROJECT-ID`),
-    // network_id: 3,       // Ropsten's id
-    // gas: 5500000,        // Ropsten has a lower block limit than mainnet
-    // confirmations: 2,    // # of confs to wait between deployments. (default: 0)
-    // timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
-    // skipDryRun: true     // Skip dry run before migrations? (default: false for public nets )
-    // },
-    // Useful for private networks
-    // private: {
-    // provider: () => new HDWalletProvider(mnemonic, `https://network.io`),
-    // network_id: 2111,   // This network is yours, in the cloud.
-    // production: true    // Treats this network as if it was a public net. (default: false)
-    // }
+    goerli: {
+      provider: () => new HDWalletProvider(
+        process.env.MNEMONIC,
+        process.env.PROVIDER,
+        0, //address_index
+        10, // num_addresses
+        true // shareNonce
+      ),
+      network_id: 5,
+      gas: 8e6,
+      gasPrice: +process.env.GAS_PRICE || 10e9, // 100 GWEI, goerli is busy!
+      confirmations: 6,
+      timeoutBlocks: 50,
+      skipDryRun: false
+    },
+
+    mumbai: {
+      provider: () =>
+        new HDWalletProvider(
+          process.env.MNEMONIC,
+          process.env.PROVIDER,
+          0, //address_index
+          10, // num_addresses
+          true // shareNonce
+        ),
+      network_id: 80001,
+      gas: 8e6,
+      gasPrice: + process.env.GAS_PRICE || 1e9,
+      confirmations: 6,
+      timeoutBlocks: 50,
+      skipDryRun: false,
+    },
+
+    rinkeby: {
+      provider: () =>
+        new HDWalletProvider(
+          process.env.MNEMONIC,
+          process.env.PROVIDER,
+          0, //address_index
+          10, // num_addresses
+          true // shareNonce
+        ),
+      network_id: 4,
+      gas: process.env.GAS_PRICE,
+      gasPrice: 1e9,
+      confirmations: 6,
+      timeoutBlocks: 50,
+      skipDryRun: false,
+    },
+
+    ganache: {
+      host: "localhost",
+      port: 8545,
+      network_id: "*"
+    }
   },
   plugins: ["solidity-coverage"],
   // Set default mocha options here, use special reporters etc.
   mocha: {
     reporter: 'eth-gas-reporter',
-    reporterOptions : { showTimeSpent: true}
-    // timeout: 100000
+    reporterOptions: { showTimeSpent: true }
   },
 
   // Configure your compilers
   compilers: {
     solc: {
-       version: "0.8.0",    // Fetch exact version from solc-bin (default: truffle's version)
-       settings: {          // See the solidity docs for advice about optimization and evmVersion
+      version: "0.8.0",    // Fetch exact version from solc-bin (default: truffle's version)
+      settings: {          // See the solidity docs for advice about optimization and evmVersion
         optimizer: {
           enabled: false,
           runs: 200

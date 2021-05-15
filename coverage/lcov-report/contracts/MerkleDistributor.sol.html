@@ -25,9 +25,9 @@
         <span class='fraction'>24/24</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>16/16</span>
+        <span class='fraction'>8/16</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -150,47 +150,47 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">18×</span>
-<span class="cline-any cline-yes">16×</span>
-<span class="cline-any cline-yes">14×</span>
-<span class="cline-any cline-yes">12×</span>
-<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">8×</span>
-<span class="cline-any cline-yes">8×</span>
-<span class="cline-any cline-yes">8×</span>
-<span class="cline-any cline-yes">8×</span>
-<span class="cline-any cline-yes">8×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">17×</span>
-<span class="cline-any cline-yes">17×</span>
-<span class="cline-any cline-yes">17×</span>
-<span class="cline-any cline-yes">17×</span>
-<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">15×</span>
-<span class="cline-any cline-yes">15×</span>
-<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">21×</span>
-<span class="cline-any cline-yes">21×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">21×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">17×</span>
-<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -228,11 +228,11 @@ contract MerkleDistributor is IMerkleDrop {
         external
         override
     {
-        require(address(config[merkleRoot].token) == address(0), "merkleRoot already register");
-        require(merkleRoot != bytes32(0), "empty root");
-        require(token != address(0), "empty token");
-        require(tokensProvider != address(0), "empty provider");
-        require(startTime &lt; endTime, "wrong dates");
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(address(config[merkleRoot].token) == address(0), "merkleRoot already register");
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(merkleRoot != bytes32(0), "empty root");
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(token != address(0), "empty token");
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(tokensProvider != address(0), "empty provider");
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(startTime &lt; endTime, "wrong dates");
 &nbsp;
         Config storage _config = config[merkleRoot];
         _config.token = IERC20(token);
@@ -259,16 +259,16 @@ contract MerkleDistributor is IMerkleDrop {
         bytes32 leaf = keccak256(abi.encodePacked(index, account, amount));
         bytes32 merkleRoot = MerkleProof.getMerkleRoot(merkleProofs, leaf);
 &nbsp;
-        require(
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(
             config[merkleRoot].startTime &lt; block.timestamp
             &amp;&amp; config[merkleRoot].endTime &gt;= block.timestamp
             ,"out of time / wrong root"
         );
 &nbsp;
-        require(!isClaimed(merkleRoot, index), "already claimed");
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(!isClaimed(merkleRoot, index), "already claimed");
         _setClaimed(merkleRoot, index);
 &nbsp;
-        require(
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(
             config[merkleRoot].token.transferFrom(
                 config[merkleRoot].tokensProvider,
                 account,
@@ -283,7 +283,7 @@ contract MerkleDistributor is IMerkleDrop {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat May 15 2021 13:33:07 GMT+0100 (Western European Summer Time)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat May 15 2021 15:13:12 GMT+0100 (Western European Summer Time)
 </div>
 </div>
 <script src="../prettify.js"></script>
