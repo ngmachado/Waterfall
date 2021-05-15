@@ -28,6 +28,9 @@ contract MerkleDistributor is IMerkleDrop {
         override
     {
         require(address(config[merkleRoot].token) == address(0), "merkleRoot already register");
+        require(merkleRoot != bytes32(0), "empty root");
+        require(token != address(0), "empty token");
+        require(tokensProvider != address(0), "empty provider");
         require(startTime < endTime, "wrong dates");
 
         Config storage _config = config[merkleRoot];
