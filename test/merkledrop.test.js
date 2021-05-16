@@ -41,17 +41,17 @@ contract("MerkleDrop - Claims testings", accounts => {
         await drop.newDistribuition(
             root,
             token1.address,
-            tokenProvider,
             nowTimestamp - (24 * 60),
-            nowTimestamp + (24 * 60)
+            nowTimestamp + (24 * 60),
+            {from: tokenProvider}
         );
 
         await expectRevert(drop.newDistribuition(
             root,
             token2.address,
-            tokenProvider,
             nowTimestamp - (24 * 60),
-            nowTimestamp + (24 * 60)
+            nowTimestamp + (24 * 60),
+            {from: tokenProvider}
         ), "merkleRoot already register");
     });
 
@@ -70,30 +70,23 @@ contract("MerkleDrop - Claims testings", accounts => {
         await expectRevert(drop.newDistribuition(
             "0x0",
             token.address,
-            tokenProvider,
             nowTimestamp - (24 * 60),
-            nowTimestamp + (24 * 60)
+            nowTimestamp + (24 * 60),
+            {from: tokenProvider}
         ), "empty root");
         await expectRevert(drop.newDistribuition(
             root,
             ZERO_ADDRESS,
-            tokenProvider,
             nowTimestamp - (24 * 60),
-            nowTimestamp + (24 * 60)
+            nowTimestamp + (24 * 60),
+            {from: tokenProvider}
         ), "empty token");
         await expectRevert(drop.newDistribuition(
             root,
             token.address,
-            ZERO_ADDRESS,
-            nowTimestamp - (24 * 60),
-            nowTimestamp + (24 * 60)
-        ), "empty provider");
-        await expectRevert(drop.newDistribuition(
-            root,
-            token.address,
-            tokenProvider,
             nowTimestamp,
-            nowTimestamp - 1
+            nowTimestamp - 1,
+            {from: tokenProvider}
         ), "wrong dates");
     });
 
@@ -112,9 +105,9 @@ contract("MerkleDrop - Claims testings", accounts => {
         await drop.newDistribuition(
             tree.getHexRoot(),
             token.address,
-            tokenProvider,
             nowTimestamp - (24 * 60),
-            nowTimestamp + (24 * 60)
+            nowTimestamp + (24 * 60),
+            {from: tokenProvider}
         );
         tree.userSet.forEach(async (user) => {
             await drop.claim(user.index, user.account, user.amount, user.hexproof);
@@ -150,16 +143,16 @@ contract("MerkleDrop - Claims testings", accounts => {
         await drop.newDistribuition(
             tree1.getHexRoot(),
             token1.address,
-            tokenProvider,
             nowTimestamp - (24 * 60),
-            nowTimestamp + (24 * 60)
+            nowTimestamp + (24 * 60),
+            {from: tokenProvider}
         );
         await drop.newDistribuition(
             tree2.getHexRoot(),
             token2.address,
-            tokenProvider,
             nowTimestamp - (24 * 60),
-            nowTimestamp + (24 * 60)
+            nowTimestamp + (24 * 60),
+            {from: tokenProvider}
         );
 
         tree1.userSet.forEach(async (user) => {
@@ -202,16 +195,16 @@ contract("MerkleDrop - Claims testings", accounts => {
         await drop.newDistribuition(
             tree1.getHexRoot(),
             token.address,
-            tokenProvider,
             nowTimestamp - (24 * 60),
-            nowTimestamp + (24 * 60)
+            nowTimestamp + (24 * 60),
+            {from: tokenProvider}
         );
         await drop.newDistribuition(
             tree2.getHexRoot(),
             token.address,
-            tokenProvider,
             nowTimestamp - (24 * 60),
-            nowTimestamp + (24 * 60)
+            nowTimestamp + (24 * 60),
+            {from: tokenProvider}
         );
         for(const user of tree1.userSet) {
             await drop.claim(user.index, user.account, user.amount, user.hexproof);
@@ -259,16 +252,16 @@ contract("MerkleDrop - Claims testings", accounts => {
         await drop.newDistribuition(
             tree1.getHexRoot(),
             token1.address,
-            tokenProvider,
             nowTimestamp - (24 * 60),
-            nowTimestamp + (24 * 60)
+            nowTimestamp + (24 * 60),
+            {from: tokenProvider}
         );
         await drop.newDistribuition(
             tree2.getHexRoot(),
             token2.address,
-            tokenProvider,
             nowTimestamp - (24 * 60),
-            nowTimestamp + (24 * 60)
+            nowTimestamp + (24 * 60),
+            {from: tokenProvider}
         );
         const user = tree1.userSet[1];
         const sameLeaf = tree2.userSet[1].leaf;
@@ -296,9 +289,9 @@ contract("MerkleDrop - Claims testings", accounts => {
         await drop.newDistribuition(
             tree.getHexRoot(),
             token.address,
-            tokenProvider,
             nowTimestamp - (24 * 60),
-            nowTimestamp - 100
+            nowTimestamp - 100,
+            {from: tokenProvider}
         );
         const user = tree.userSet[0];
         await expectRevert(
@@ -322,9 +315,9 @@ contract("MerkleDrop - Claims testings", accounts => {
         await drop.newDistribuition(
             tree.getHexRoot(),
             token.address,
-            tokenProvider,
             nowTimestamp - (24 * 60),
-            nowTimestamp + (24 * 60)
+            nowTimestamp + (24 * 60),
+            {from: tokenProvider}
         );
         const user = tree.userSet[1];
         await drop.claim(user.index, user.account, user.amount, user.hexproof);
@@ -346,9 +339,9 @@ contract("MerkleDrop - Claims testings", accounts => {
         await drop.newDistribuition(
             tree.getHexRoot(),
             token.address,
-            tokenProvider,
             nowTimestamp - (24 * 60),
-            nowTimestamp + (24 * 60)
+            nowTimestamp + (24 * 60),
+            {from: tokenProvider}
         );
         const user = tree.userSet[0];
         await expectRevert(drop.claim(user.index, user.account, "50000000000000000001", user.hexproof), "out of time / wrong root");
@@ -369,9 +362,9 @@ contract("MerkleDrop - Claims testings", accounts => {
         await drop.newDistribuition(
             tree.getHexRoot(),
             token.address,
-            tokenProvider,
             nowTimestamp - (24 * 60),
-            nowTimestamp + (24 * 60)
+            nowTimestamp + (24 * 60),
+            {from: tokenProvider}
         );
         const user = tree.userSet[0];
         await expectRevert(drop.claim(user.index, user.account, user.amount, user.hexproof), "ERC20: transfer amount exceeds balance");

@@ -6,7 +6,6 @@ interface IMerkleDrop {
     function newDistribuition(
         bytes32 merkleRoot,
         address token,
-        address tokensProvider,
         uint96 startDate,
         uint96 endDate
     )

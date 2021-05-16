@@ -20,7 +20,6 @@ contract MerkleDistributor is IMerkleDrop {
     function newDistribuition(
         bytes32 merkleRoot,
         address token,
-        address tokensProvider,
         uint96 startTime,
         uint96 endTime
     )
@@ -30,12 +29,11 @@ contract MerkleDistributor is IMerkleDrop {
         require(address(config[merkleRoot].token) == address(0), "merkleRoot already register");
         require(merkleRoot != bytes32(0), "empty root");
         require(token != address(0), "empty token");
-        require(tokensProvider != address(0), "empty provider");
         require(startTime < endTime, "wrong dates");
 
         Config storage _config = config[merkleRoot];
         _config.token = IERC20(token);
-        _config.tokensProvider = tokensProvider;
+        _config.tokensProvider = msg.sender;
         _config.startTime = startTime;
         _config.endTime = endTime;
     }
