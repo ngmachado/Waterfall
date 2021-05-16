@@ -1,5 +1,6 @@
 const { MerkleTree } = require('merkletreejs')
 const keccak256 = require('keccak256');
+const web3 = require("Web3");
 
 const toAddress = web3.utils.toChecksumAddress;
 const isAddress = web3.utils.checkAddressChecksum;
@@ -12,7 +13,9 @@ function build(data) {
     const resultData = new Array();
     for(let i = 0; i < data.length; i++) {
         let account = toAddress(data[i].account);
-        assert.ok(isAddress(account));
+        if(!isAddress(account)) {
+            throw Error("failed checkAddressChecksum to address ", account);
+        }
         account = toAddress(account)
         const leaf = soliditySha3(i, account, data[i].amount);
         resultData.push({
