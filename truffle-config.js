@@ -1,3 +1,6 @@
+const HDWalletProvider = require("@truffle/hdwallet-provider");
+require("dotenv").config();
+
 module.exports = {
   networks: {
     goerli: {
@@ -10,7 +13,7 @@ module.exports = {
       ),
       network_id: 5,
       gas: 8e6,
-      gasPrice: +process.env.GAS_PRICE || 10e9, // 100 GWEI, goerli is busy!
+      gasPrice: + process.env.GAS_PRICE || 10e9,
       confirmations: 6,
       timeoutBlocks: 50,
       skipDryRun: false
@@ -56,7 +59,13 @@ module.exports = {
       network_id: "*"
     }
   },
-  plugins: ["solidity-coverage"],
+  plugins: [
+    "solidity-coverage",
+    "truffle-plugin-verify"
+  ],
+  api_keys: {
+    etherscan: process.env.ETHERSCAN_API_KEY
+  },
   // Set default mocha options here, use special reporters etc.
   mocha: {
     reporter: 'eth-gas-reporter',
