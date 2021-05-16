@@ -15,9 +15,15 @@
   "author": "ngmachado",
   "license": "MIT",
   "dependencies": {
+    "@truffle/hdwallet-provider": "^1.4.0",
+    "axios": "^0.20.0",
+    "commander": "^2.20.3",
+    "dotenv": "^9.0.2",
     "keccak256": "^1.0.2",
+    "load-json-file": "^1.1.0",
     "merkletreejs": "^0.2.18",
-    "truffle": "^5.3.6"
+    "truffle": "^5.3.6",
+    "truffle-plugin-verify": "^0.5.8"
   },
   "devDependencies": {
     "@openzeppelin/contracts": "^4.1.0",
