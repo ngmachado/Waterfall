@@ -9231,33 +9231,33 @@
     "absolutePath": "/Users/logic/ethereum/merkle-drop/contracts/mocks/mERC20.sol",
     "exportedSymbols": {
       "Context": [
-        1119
+        1169
       ],
       "ERC20": [
-        903
+        953
       ],
       "ERC20Burnable": [
-        1042
+        1092
       ],
       "ERC20PresetFixedSupply": [
-        1096
+        1146
       ],
       "IERC20": [
-        981
+        1031
       ],
       "IERC20Metadata": [
-        1067
+        1117
       ],
       "mERC20": [
-        396
+        446
       ]
     },
-    "id": 397,
+    "id": 447,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 379,
+        "id": 429,
         "literals": [
           "solidity",
           "0.8",
@@ -9269,10 +9269,10 @@
       {
         "absolutePath": "@openzeppelin/contracts/token/ERC20/presets/ERC20PresetFixedSupply.sol",
         "file": "@openzeppelin/contracts/token/ERC20/presets/ERC20PresetFixedSupply.sol",
-        "id": 380,
+        "id": 430,
         "nodeType": "ImportDirective",
-        "scope": 397,
-        "sourceUnit": 1097,
+        "scope": 447,
+        "sourceUnit": 1147,
         "src": "57:80:4",
         "symbolAliases": [],
         "unitAlias": ""
@@ -9282,48 +9282,48 @@
         "baseContracts": [
           {
             "baseName": {
-              "id": 381,
+              "id": 431,
               "name": "ERC20PresetFixedSupply",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 1096,
+              "referencedDeclaration": 1146,
               "src": "158:22:4"
             },
-            "id": 382,
+            "id": 432,
             "nodeType": "InheritanceSpecifier",
             "src": "158:22:4"
           }
         ],
         "contractDependencies": [
-          903,
-          981,
-          1042,
-          1067,
-          1096,
-          1119
+          953,
+          1031,
+          1092,
+          1117,
+          1146,
+          1169
         ],
         "contractKind": "contract",
         "fullyImplemented": true,
-        "id": 396,
+        "id": 446,
         "linearizedBaseContracts": [
-          396,
-          1096,
-          1042,
-          903,
-          1067,
-          981,
-          1119
+          446,
+          1146,
+          1092,
+          953,
+          1117,
+          1031,
+          1169
         ],
         "name": "mERC20",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": {
-              "id": 394,
+              "id": 444,
               "nodeType": "Block",
               "src": "307:7:4",
               "statements": []
             },
-            "id": 395,
+            "id": 445,
             "implemented": true,
             "kind": "constructor",
             "modifiers": [
@@ -9331,7 +9331,7 @@
                 "arguments": [
                   {
                     "hexValue": "4d6f636b4552433230",
-                    "id": 387,
+                    "id": 437,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -9347,7 +9347,7 @@
                   },
                   {
                     "hexValue": "4d2d3230",
-                    "id": 388,
+                    "id": 438,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -9362,11 +9362,11 @@
                     "value": "M-20"
                   },
                   {
-                    "id": 389,
+                    "id": 439,
                     "name": "initialSupply",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 384,
+                    "referencedDeclaration": 434,
                     "src": "280:13:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
@@ -9375,7 +9375,7 @@
                   },
                   {
                     "expression": {
-                      "id": 390,
+                      "id": 440,
                       "name": "msg",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
@@ -9386,7 +9386,7 @@
                         "typeString": "msg"
                       }
                     },
-                    "id": 391,
+                    "id": 441,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -9400,12 +9400,12 @@
                     }
                   }
                 ],
-                "id": 392,
+                "id": 442,
                 "modifierName": {
-                  "id": 386,
+                  "id": 436,
                   "name": "ERC20PresetFixedSupply",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 1096,
+                  "referencedDeclaration": 1146,
                   "src": "236:22:4"
                 },
                 "nodeType": "ModifierInvocation",
@@ -9415,16 +9415,16 @@
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 385,
+              "id": 435,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 384,
+                  "id": 434,
                   "mutability": "mutable",
                   "name": "initialSupply",
                   "nodeType": "VariableDeclaration",
-                  "scope": 395,
+                  "scope": 445,
                   "src": "208:21:4",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -9433,7 +9433,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 383,
+                    "id": 433,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "208:7:4",
@@ -9448,19 +9448,19 @@
               "src": "198:37:4"
             },
             "returnParameters": {
-              "id": 393,
+              "id": 443,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "307:0:4"
             },
-            "scope": 396,
+            "scope": 446,
             "src": "187:127:4",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "public"
           }
         ],
-        "scope": 397,
+        "scope": 447,
         "src": "139:177:4"
       }
     ],
@@ -9470,33 +9470,33 @@
     "absolutePath": "/Users/logic/ethereum/merkle-drop/contracts/mocks/mERC20.sol",
     "exportedSymbols": {
       "Context": [
-        1119
+        1169
       ],
       "ERC20": [
-        903
+        953
       ],
       "ERC20Burnable": [
-        1042
+        1092
       ],
       "ERC20PresetFixedSupply": [
-        1096
+        1146
       ],
       "IERC20": [
-        981
+        1031
       ],
       "IERC20Metadata": [
-        1067
+        1117
       ],
       "mERC20": [
-        396
+        446
       ]
     },
-    "id": 397,
+    "id": 447,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 379,
+        "id": 429,
         "literals": [
           "solidity",
           "0.8",
@@ -9508,10 +9508,10 @@
       {
         "absolutePath": "@openzeppelin/contracts/token/ERC20/presets/ERC20PresetFixedSupply.sol",
         "file": "@openzeppelin/contracts/token/ERC20/presets/ERC20PresetFixedSupply.sol",
-        "id": 380,
+        "id": 430,
         "nodeType": "ImportDirective",
-        "scope": 397,
-        "sourceUnit": 1097,
+        "scope": 447,
+        "sourceUnit": 1147,
         "src": "57:80:4",
         "symbolAliases": [],
         "unitAlias": ""
@@ -9521,48 +9521,48 @@
         "baseContracts": [
           {
             "baseName": {
-              "id": 381,
+              "id": 431,
               "name": "ERC20PresetFixedSupply",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 1096,
+              "referencedDeclaration": 1146,
               "src": "158:22:4"
             },
-            "id": 382,
+            "id": 432,
             "nodeType": "InheritanceSpecifier",
             "src": "158:22:4"
           }
         ],
         "contractDependencies": [
-          903,
-          981,
-          1042,
-          1067,
-          1096,
-          1119
+          953,
+          1031,
+          1092,
+          1117,
+          1146,
+          1169
         ],
         "contractKind": "contract",
         "fullyImplemented": true,
-        "id": 396,
+        "id": 446,
         "linearizedBaseContracts": [
-          396,
-          1096,
-          1042,
-          903,
-          1067,
-          981,
-          1119
+          446,
+          1146,
+          1092,
+          953,
+          1117,
+          1031,
+          1169
         ],
         "name": "mERC20",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": {
-              "id": 394,
+              "id": 444,
               "nodeType": "Block",
               "src": "307:7:4",
               "statements": []
             },
-            "id": 395,
+            "id": 445,
             "implemented": true,
             "kind": "constructor",
             "modifiers": [
@@ -9570,7 +9570,7 @@
                 "arguments": [
                   {
                     "hexValue": "4d6f636b4552433230",
-                    "id": 387,
+                    "id": 437,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -9586,7 +9586,7 @@
                   },
                   {
                     "hexValue": "4d2d3230",
-                    "id": 388,
+                    "id": 438,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -9601,11 +9601,11 @@
                     "value": "M-20"
                   },
                   {
-                    "id": 389,
+                    "id": 439,
                     "name": "initialSupply",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 384,
+                    "referencedDeclaration": 434,
                     "src": "280:13:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
@@ -9614,7 +9614,7 @@
                   },
                   {
                     "expression": {
-                      "id": 390,
+                      "id": 440,
                       "name": "msg",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
@@ -9625,7 +9625,7 @@
                         "typeString": "msg"
                       }
                     },
-                    "id": 391,
+                    "id": 441,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -9639,12 +9639,12 @@
                     }
                   }
                 ],
-                "id": 392,
+                "id": 442,
                 "modifierName": {
-                  "id": 386,
+                  "id": 436,
                   "name": "ERC20PresetFixedSupply",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 1096,
+                  "referencedDeclaration": 1146,
                   "src": "236:22:4"
                 },
                 "nodeType": "ModifierInvocation",
@@ -9654,16 +9654,16 @@
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 385,
+              "id": 435,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 384,
+                  "id": 434,
                   "mutability": "mutable",
                   "name": "initialSupply",
                   "nodeType": "VariableDeclaration",
-                  "scope": 395,
+                  "scope": 445,
                   "src": "208:21:4",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -9672,7 +9672,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 383,
+                    "id": 433,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "208:7:4",
@@ -9687,19 +9687,19 @@
               "src": "198:37:4"
             },
             "returnParameters": {
-              "id": 393,
+              "id": 443,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "307:0:4"
             },
-            "scope": 396,
+            "scope": 446,
             "src": "187:127:4",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "public"
           }
         ],
-        "scope": 397,
+        "scope": 447,
         "src": "139:177:4"
       }
     ],
@@ -9711,7 +9711,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.1",
-  "updatedAt": "2021-05-12T20:55:58.834Z",
+  "updatedAt": "2021-05-16T11:28:19.425Z",
   "devdoc": {
     "kind": "dev",
     "methods": {

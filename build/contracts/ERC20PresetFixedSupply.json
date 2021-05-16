@@ -11137,30 +11137,30 @@
     "absolutePath": "@openzeppelin/contracts/token/ERC20/presets/ERC20PresetFixedSupply.sol",
     "exportedSymbols": {
       "Context": [
-        1119
+        1169
       ],
       "ERC20": [
-        903
+        953
       ],
       "ERC20Burnable": [
-        1042
+        1092
       ],
       "ERC20PresetFixedSupply": [
-        1096
+        1146
       ],
       "IERC20": [
-        981
+        1031
       ],
       "IERC20Metadata": [
-        1067
+        1117
       ]
     },
-    "id": 1097,
+    "id": 1147,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1069,
+        "id": 1119,
         "literals": [
           "solidity",
           "^",
@@ -11173,10 +11173,10 @@
       {
         "absolutePath": "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol",
         "file": "../extensions/ERC20Burnable.sol",
-        "id": 1070,
+        "id": 1120,
         "nodeType": "ImportDirective",
-        "scope": 1097,
-        "sourceUnit": 1043,
+        "scope": 1147,
+        "sourceUnit": 1093,
         "src": "57:41:9",
         "symbolAliases": [],
         "unitAlias": ""
@@ -11186,47 +11186,47 @@
         "baseContracts": [
           {
             "baseName": {
-              "id": 1072,
+              "id": 1122,
               "name": "ERC20Burnable",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 1042,
+              "referencedDeclaration": 1092,
               "src": "492:13:9"
             },
-            "id": 1073,
+            "id": 1123,
             "nodeType": "InheritanceSpecifier",
             "src": "492:13:9"
           }
         ],
         "contractDependencies": [
-          903,
-          981,
-          1042,
-          1067,
-          1119
+          953,
+          1031,
+          1092,
+          1117,
+          1169
         ],
         "contractKind": "contract",
         "documentation": {
-          "id": 1071,
+          "id": 1121,
           "nodeType": "StructuredDocumentation",
           "src": "100:356:9",
           "text": " @dev {ERC20} token, including:\n  - Preminted initial supply\n  - Ability for holders to burn (destroy) their tokens\n  - No access control mechanism (for minting/pausing) and hence no governance\n This contract uses {ERC20Burnable} to include burn capabilities - head to\n its documentation for details.\n _Available since v3.4._"
         },
         "fullyImplemented": true,
-        "id": 1096,
+        "id": 1146,
         "linearizedBaseContracts": [
-          1096,
-          1042,
-          903,
-          1067,
-          981,
-          1119
+          1146,
+          1092,
+          953,
+          1117,
+          1031,
+          1169
         ],
         "name": "ERC20PresetFixedSupply",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": {
-              "id": 1094,
+              "id": 1144,
               "nodeType": "Block",
               "src": "798:44:9",
               "statements": [
@@ -11234,11 +11234,11 @@
                   "expression": {
                     "arguments": [
                       {
-                        "id": 1090,
+                        "id": 1140,
                         "name": "owner",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1082,
+                        "referencedDeclaration": 1132,
                         "src": "814:5:9",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -11246,11 +11246,11 @@
                         }
                       },
                       {
-                        "id": 1091,
+                        "id": 1141,
                         "name": "initialSupply",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1080,
+                        "referencedDeclaration": 1130,
                         "src": "821:13:9",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -11269,18 +11269,18 @@
                           "typeString": "uint256"
                         }
                       ],
-                      "id": 1089,
+                      "id": 1139,
                       "name": "_mint",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 784,
+                      "referencedDeclaration": 834,
                       "src": "808:5:9",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$_t_uint256_$returns$__$",
                         "typeString": "function (address,uint256)"
                       }
                     },
-                    "id": 1092,
+                    "id": 1142,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -11295,30 +11295,30 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 1093,
+                  "id": 1143,
                   "nodeType": "ExpressionStatement",
                   "src": "808:27:9"
                 }
               ]
             },
             "documentation": {
-              "id": 1074,
+              "id": 1124,
               "nodeType": "StructuredDocumentation",
               "src": "512:131:9",
               "text": " @dev Mints `initialSupply` amount of token and transfers them to `owner`.\n See {ERC20-constructor}."
             },
-            "id": 1095,
+            "id": 1145,
             "implemented": true,
             "kind": "constructor",
             "modifiers": [
               {
                 "arguments": [
                   {
-                    "id": 1085,
+                    "id": 1135,
                     "name": "name",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1076,
+                    "referencedDeclaration": 1126,
                     "src": "784:4:9",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_memory_ptr",
@@ -11326,11 +11326,11 @@
                     }
                   },
                   {
-                    "id": 1086,
+                    "id": 1136,
                     "name": "symbol",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1078,
+                    "referencedDeclaration": 1128,
                     "src": "790:6:9",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_memory_ptr",
@@ -11338,12 +11338,12 @@
                     }
                   }
                 ],
-                "id": 1087,
+                "id": 1137,
                 "modifierName": {
-                  "id": 1084,
+                  "id": 1134,
                   "name": "ERC20",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 903,
+                  "referencedDeclaration": 953,
                   "src": "778:5:9"
                 },
                 "nodeType": "ModifierInvocation",
@@ -11353,16 +11353,16 @@
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1083,
+              "id": 1133,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1076,
+                  "id": 1126,
                   "mutability": "mutable",
                   "name": "name",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1095,
+                  "scope": 1145,
                   "src": "669:18:9",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -11371,7 +11371,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1075,
+                    "id": 1125,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "669:6:9",
@@ -11384,11 +11384,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1078,
+                  "id": 1128,
                   "mutability": "mutable",
                   "name": "symbol",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1095,
+                  "scope": 1145,
                   "src": "697:20:9",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -11397,7 +11397,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1077,
+                    "id": 1127,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "697:6:9",
@@ -11410,11 +11410,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1080,
+                  "id": 1130,
                   "mutability": "mutable",
                   "name": "initialSupply",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1095,
+                  "scope": 1145,
                   "src": "727:21:9",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -11423,7 +11423,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1079,
+                    "id": 1129,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "727:7:9",
@@ -11436,11 +11436,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1082,
+                  "id": 1132,
                   "mutability": "mutable",
                   "name": "owner",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1095,
+                  "scope": 1145,
                   "src": "758:13:9",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -11449,7 +11449,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1081,
+                    "id": 1131,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "758:7:9",
@@ -11465,19 +11465,19 @@
               "src": "659:118:9"
             },
             "returnParameters": {
-              "id": 1088,
+              "id": 1138,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "798:0:9"
             },
-            "scope": 1096,
+            "scope": 1146,
             "src": "648:194:9",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "public"
           }
         ],
-        "scope": 1097,
+        "scope": 1147,
         "src": "457:387:9"
       }
     ],
@@ -11487,30 +11487,30 @@
     "absolutePath": "@openzeppelin/contracts/token/ERC20/presets/ERC20PresetFixedSupply.sol",
     "exportedSymbols": {
       "Context": [
-        1119
+        1169
       ],
       "ERC20": [
-        903
+        953
       ],
       "ERC20Burnable": [
-        1042
+        1092
       ],
       "ERC20PresetFixedSupply": [
-        1096
+        1146
       ],
       "IERC20": [
-        981
+        1031
       ],
       "IERC20Metadata": [
-        1067
+        1117
       ]
     },
-    "id": 1097,
+    "id": 1147,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1069,
+        "id": 1119,
         "literals": [
           "solidity",
           "^",
@@ -11523,10 +11523,10 @@
       {
         "absolutePath": "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol",
         "file": "../extensions/ERC20Burnable.sol",
-        "id": 1070,
+        "id": 1120,
         "nodeType": "ImportDirective",
-        "scope": 1097,
-        "sourceUnit": 1043,
+        "scope": 1147,
+        "sourceUnit": 1093,
         "src": "57:41:9",
         "symbolAliases": [],
         "unitAlias": ""
@@ -11536,47 +11536,47 @@
         "baseContracts": [
           {
             "baseName": {
-              "id": 1072,
+              "id": 1122,
               "name": "ERC20Burnable",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 1042,
+              "referencedDeclaration": 1092,
               "src": "492:13:9"
             },
-            "id": 1073,
+            "id": 1123,
             "nodeType": "InheritanceSpecifier",
             "src": "492:13:9"
           }
         ],
         "contractDependencies": [
-          903,
-          981,
-          1042,
-          1067,
-          1119
+          953,
+          1031,
+          1092,
+          1117,
+          1169
         ],
         "contractKind": "contract",
         "documentation": {
-          "id": 1071,
+          "id": 1121,
           "nodeType": "StructuredDocumentation",
           "src": "100:356:9",
           "text": " @dev {ERC20} token, including:\n  - Preminted initial supply\n  - Ability for holders to burn (destroy) their tokens\n  - No access control mechanism (for minting/pausing) and hence no governance\n This contract uses {ERC20Burnable} to include burn capabilities - head to\n its documentation for details.\n _Available since v3.4._"
         },
         "fullyImplemented": true,
-        "id": 1096,
+        "id": 1146,
         "linearizedBaseContracts": [
-          1096,
-          1042,
-          903,
-          1067,
-          981,
-          1119
+          1146,
+          1092,
+          953,
+          1117,
+          1031,
+          1169
         ],
         "name": "ERC20PresetFixedSupply",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": {
-              "id": 1094,
+              "id": 1144,
               "nodeType": "Block",
               "src": "798:44:9",
               "statements": [
@@ -11584,11 +11584,11 @@
                   "expression": {
                     "arguments": [
                       {
-                        "id": 1090,
+                        "id": 1140,
                         "name": "owner",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1082,
+                        "referencedDeclaration": 1132,
                         "src": "814:5:9",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -11596,11 +11596,11 @@
                         }
                       },
                       {
-                        "id": 1091,
+                        "id": 1141,
                         "name": "initialSupply",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1080,
+                        "referencedDeclaration": 1130,
                         "src": "821:13:9",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -11619,18 +11619,18 @@
                           "typeString": "uint256"
                         }
                       ],
-                      "id": 1089,
+                      "id": 1139,
                       "name": "_mint",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 784,
+                      "referencedDeclaration": 834,
                       "src": "808:5:9",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$_t_uint256_$returns$__$",
                         "typeString": "function (address,uint256)"
                       }
                     },
-                    "id": 1092,
+                    "id": 1142,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -11645,30 +11645,30 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 1093,
+                  "id": 1143,
                   "nodeType": "ExpressionStatement",
                   "src": "808:27:9"
                 }
               ]
             },
             "documentation": {
-              "id": 1074,
+              "id": 1124,
               "nodeType": "StructuredDocumentation",
               "src": "512:131:9",
               "text": " @dev Mints `initialSupply` amount of token and transfers them to `owner`.\n See {ERC20-constructor}."
             },
-            "id": 1095,
+            "id": 1145,
             "implemented": true,
             "kind": "constructor",
             "modifiers": [
               {
                 "arguments": [
                   {
-                    "id": 1085,
+                    "id": 1135,
                     "name": "name",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1076,
+                    "referencedDeclaration": 1126,
                     "src": "784:4:9",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_memory_ptr",
@@ -11676,11 +11676,11 @@
                     }
                   },
                   {
-                    "id": 1086,
+                    "id": 1136,
                     "name": "symbol",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1078,
+                    "referencedDeclaration": 1128,
                     "src": "790:6:9",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_memory_ptr",
@@ -11688,12 +11688,12 @@
                     }
                   }
                 ],
-                "id": 1087,
+                "id": 1137,
                 "modifierName": {
-                  "id": 1084,
+                  "id": 1134,
                   "name": "ERC20",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 903,
+                  "referencedDeclaration": 953,
                   "src": "778:5:9"
                 },
                 "nodeType": "ModifierInvocation",
@@ -11703,16 +11703,16 @@
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1083,
+              "id": 1133,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1076,
+                  "id": 1126,
                   "mutability": "mutable",
                   "name": "name",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1095,
+                  "scope": 1145,
                   "src": "669:18:9",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -11721,7 +11721,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1075,
+                    "id": 1125,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "669:6:9",
@@ -11734,11 +11734,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1078,
+                  "id": 1128,
                   "mutability": "mutable",
                   "name": "symbol",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1095,
+                  "scope": 1145,
                   "src": "697:20:9",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -11747,7 +11747,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1077,
+                    "id": 1127,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "697:6:9",
@@ -11760,11 +11760,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1080,
+                  "id": 1130,
                   "mutability": "mutable",
                   "name": "initialSupply",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1095,
+                  "scope": 1145,
                   "src": "727:21:9",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -11773,7 +11773,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1079,
+                    "id": 1129,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "727:7:9",
@@ -11786,11 +11786,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1082,
+                  "id": 1132,
                   "mutability": "mutable",
                   "name": "owner",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1095,
+                  "scope": 1145,
                   "src": "758:13:9",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -11799,7 +11799,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1081,
+                    "id": 1131,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "758:7:9",
@@ -11815,19 +11815,19 @@
               "src": "659:118:9"
             },
             "returnParameters": {
-              "id": 1088,
+              "id": 1138,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "798:0:9"
             },
-            "scope": 1096,
+            "scope": 1146,
             "src": "648:194:9",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "public"
           }
         ],
-        "scope": 1097,
+        "scope": 1147,
         "src": "457:387:9"
       }
     ],
@@ -11839,7 +11839,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.1",
-  "updatedAt": "2021-05-12T20:55:58.878Z",
+  "updatedAt": "2021-05-16T11:28:19.449Z",
   "devdoc": {
     "details": "{ERC20} token, including:  - Preminted initial supply  - Ability for holders to burn (destroy) their tokens  - No access control mechanism (for minting/pausing) and hence no governance This contract uses {ERC20Burnable} to include burn capabilities - head to its documentation for details. _Available since v3.4._",
     "kind": "dev",
