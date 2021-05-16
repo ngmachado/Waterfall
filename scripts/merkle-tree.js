@@ -1,6 +1,6 @@
 const { MerkleTree } = require('merkletreejs')
 const keccak256 = require('keccak256');
-const web3 = require("Web3");
+const web3 = require("web3");
 
 const toAddress = web3.utils.toChecksumAddress;
 const isAddress = web3.utils.checkAddressChecksum;
