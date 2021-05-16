@@ -74,5 +74,6 @@ contract MerkleDistributor is IMerkleDrop {
                 amount
             )
         , "transfer failed");
+        emit Claimed(account, address(config[merkleRoot].token), amount);
     }
 }
