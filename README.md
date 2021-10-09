@@ -1,5 +1,8 @@
 # Waterfall
 
+[![Coverage Status](https://coveralls.io/repos/github/ngmachado/Waterfall/badge.svg?branch=master)](https://coveralls.io/github/ngmachado/Waterfall?branch=master)
+
+---
 ## Intro
 
 With Waterfall is easy to make Merkle Tree distribuition without coding. For each supported EVM network exist one Waterfall that anyone can register one distribuition.
