@@ -1,27 +1,27 @@
-# merkle-drop
+# Waterfall
 
 ## Intro
 
-Easy way to make Merkle Tree distribuition without coding. For each supported EVM network exist one merkle-drop contract that anyone can register one distribuition.
+With Waterfall is easy to make Merkle Tree distribuition without coding. For each supported EVM network exist one Waterfall that anyone can register one distribuition.
 
 Each distribuition is bound to a set of time, soo you can decide how much time will the distribuion run.
 
-Merkle-drop don't manage funds, for each valid claim will this contract will perform a ERC20 transferFrom from the tokenProvider account.
+Waterfall don't manage funds, for each valid claim will this contract will perform a ERC20 transferFrom from the tokenProvider account.
 
-**Merkle-drop don't have administrative powers**
+**Waterfall contract don't have administrative powers**
 
 ## How to use - main steps
 
-- Generete data for each user drop, follow a specific format (detail).
-- Generate the merkle tree root based on user drop data.
-- In ERC20 token to be distributed `approve` merkle-drop contract with the total amount of tokens to be transfer.
-- Register the merkle drop in the smart contract: merkleRoot, token, tokensProvider, startTime, endTime
+- Generete data a drop, follow a specific format (see detail).
+- Generate the merkle tree root based with drop data.
+- In your token contract `approve` Waterfall address with the total amount of tokens to be transfer.
+- Register the merkle drop information in the smart contract: merkleRoot, token, tokensProvider, startTime, endTime.
 
 ## Details and concepts
 
 `drop` - A set of users can claim a particular token.
 
-`merkleRoot` - generated from user set of data, each user claim represent a leaf.
+`merkleRoot` - generated from user set of data, each singular drop is represent in a leaf.
 
 `leaf` - user claim that follow the format: `index account amount`
 
@@ -69,13 +69,13 @@ Merkle distributions avoid spamming, the user have to claim the tokens he wants.
 
 **This project has not audit.**
 
-This means in my best effort to make the code correct, providing unit-tests and coverage analysis this project can have bugs.
+This means in my best effort to make the code correct, providing unit-tests and coverage analysis, but the project can still have bugs.
 
 **Use at your responsability**
 
 That define the merkle root is the set of user data, in the case of two token use identical data, only one can be register and used. This can overcame by chainging something in the data like swap two indexes or just add 1 to any claimable amount.
 
-Merkle-drop don't manage or hold tokens, if tokenProvider don't approve or doesn't have enough token amount, eventually the claim will revert.
+Waterfall contract don't manage or hold any tokens, if tokenProvider don't approve or doesn't have enough token amount, eventually the claim will revert. (_this is not a limitation, is a feature_)
 
 The merkle tree generated from given data can generate a unbalanced tree. We are not adding fake or double information to balance the tree.
 
