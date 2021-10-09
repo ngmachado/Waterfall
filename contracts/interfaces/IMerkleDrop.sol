@@ -6,8 +6,8 @@ interface IMerkleDrop {
     function newDistribuition(
         bytes32 merkleRoot,
         address token,
-        uint96 startDate,
-        uint96 endDate
+        uint96 startTime,
+        uint96 endTime
     )
         external;
 
@@ -21,4 +21,5 @@ interface IMerkleDrop {
     ) external;
 
     event Claimed(address account, address token, uint256 amount);
+    event NewDistribuition(address indexed sender, address indexed token, bytes32 indexed merkleRoot, uint96 startTime, uint96 endTime);
 }
