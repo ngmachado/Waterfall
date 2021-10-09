@@ -36,6 +36,7 @@ contract MerkleDistributor is IMerkleDrop {
         _config.tokensProvider = msg.sender;
         _config.startTime = startTime;
         _config.endTime = endTime;
+        emit NewDistribuition(msg.sender, token, merkleRoot, startTime, endTime);
     }
 
     function isClaimed(bytes32 merkleRoot, uint256 index) public view override returns (bool) {
