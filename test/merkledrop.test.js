@@ -369,4 +369,40 @@ contract("MerkleDrop - Claims testings", accounts => {
         const user = tree.userSet[0];
         await expectRevert(drop.claim(user.index, user.account, user.amount, user.hexproof), "ERC20: transfer amount exceeds balance");
     });
+
+    it("Case #7 - check events", async () => {
+        const mintAmount = toWei("1000");
+        const token = await tokensFactory.new(mintAmount, {from: tokenProvider});
+        const drop = await merkleFactory.new({from:tokenProvider});
+        await token.approve(drop.address, mintAmount, {from: tokenProvider});
+        const userSet = [
+            {account: "0x00000a86986e8ba3557992df02883e4a646e8f25", amount: "50000000000000000000"},
+            {account: "0x00009c99bffc538de01866f74cfec4819dc467f3", amount: "75000000000000000000"},
+            {account: "0x00035a5f2c595c3bb53aae4528038dd7a85641c3", amount: "50000000000000000000"},
+            {account: "0x1e27c325ba246f581a6dcaa912a8e80163454c75", amount: "10000000000000000000"}
+        ];
+        const tree = Tree.build(userSet);
+
+        const receiptNewDistribuition = await drop.newDistribuition(
+            tree.getHexRoot(),
+            token.address,
+            nowTimestamp - (24 * 60),
+            nowTimestamp + (24 * 60),
+            {from: tokenProvider}
+        );
+        expectEvent(receiptNewDistribuition, 'NewDistribuition', {
+            sender: tokenProvider,
+            token: token.address,
+            merkleRoot: tree.getHexRoot(),
+            startTime: (nowTimestamp - (24 * 60)).toString(),
+            endTime: (nowTimestamp + (24 * 60)).toString()
+        });
+
+        const receiptClaimed = await drop.claim(tree.userSet[0].index, tree.userSet[0].account, tree.userSet[0].amount, tree.userSet[0].hexproof)
+        expectEvent(receiptClaimed, 'Claimed', {
+            account: tree.userSet[0].account,
+            token: token.address,
+            amount: "50000000000000000000"
+        });
+    });
 });
