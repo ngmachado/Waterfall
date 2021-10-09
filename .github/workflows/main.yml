@@ -23,7 +23,7 @@ jobs:
 
       - name: Install and build
         run: |
-          npm ci
+          npm npm
           npm run-script build
   coverage:
     name: Run coverage
