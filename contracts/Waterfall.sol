@@ -2,10 +2,10 @@
 pragma solidity 0.8.0;
 
 import "./libraries/MerkleProofLib.sol";
-import "./interfaces/IMerkleDrop.sol";
+import "./interfaces/IWaterfall.sol";
 import "./interfaces/IERC20.sol";
 
-contract MerkleDistributor is IMerkleDrop {
+contract Waterfall is IWaterfall {
 
     struct Config {
         IERC20 token;

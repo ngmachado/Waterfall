@@ -1,6 +1,6 @@
 const Tree = require("../scripts/merkle-tree");
-const tokensFactory = artifacts.require("mERC20");
-const merkleFactory = artifacts.require("MerkleDistributor");
+const tokenFactory = artifacts.require("mockERC20");
+const Waterfall = artifacts.require("Waterfall");
 
 const { MerkleTree } = require('merkletreejs')
 const keccak256 = require('keccak256')
@@ -15,21 +15,21 @@ const toBN = web3.utils.BN;
 
 const ZERO_ADDRESS = "0x0000000000000000000000000000000000000000"
 
-contract("MerkleDrop - Claims testings", accounts => {
+contract("Waterfall Drops - Claims testings", accounts => {
     const tokenProvider = accounts[0];
 
     it("Case #0 - Check deployment", async() => {
         const mintAmount = toWei("1000");
-        const token = await tokensFactory.new(mintAmount, {from: tokenProvider});
-        const drop = await merkleFactory.new({from:tokenProvider});
+        const token = await tokenFactory.new(mintAmount, {from: tokenProvider});
+        const drop = await Waterfall.new({from:tokenProvider});
         assert.equal((await token.balanceOf(tokenProvider)).toString(), mintAmount, "minted amount wrong");
     });
 
     it("Case #0.1 - should revert if register two identical userSet", async() => {
         const mintAmount = toWei("1000");
-        const token1 = await tokensFactory.new(mintAmount, {from: tokenProvider});
-        const token2 = await tokensFactory.new(mintAmount, {from: tokenProvider});
-        const drop = await merkleFactory.new();
+        const token1 = await tokenFactory.new(mintAmount, {from: tokenProvider});
+        const token2 = await tokenFactory.new(mintAmount, {from: tokenProvider});
+        const drop = await Waterfall.new();
         const userSet = [
             {account: "0x00000a86986e8ba3557992df02883e4a646e8f25", amount: "50000000000000000000"},
             {account: "0x00009c99bffc538de01866f74cfec4819dc467f3", amount: "75000000000000000000"},
@@ -57,8 +57,8 @@ contract("MerkleDrop - Claims testings", accounts => {
 
     it("Case #0.2 - should revert if register without correct information", async() => {
         const mintAmount = toWei("1000");
-        const token = await tokensFactory.new(mintAmount, {from: tokenProvider});
-        const drop = await merkleFactory.new();
+        const token = await tokenFactory.new(mintAmount, {from: tokenProvider});
+        const drop = await Waterfall.new();
         const userSet = [
             {account: "0x00000a86986e8ba3557992df02883e4a646e8f25", amount: "50000000000000000000"},
             {account: "0x00009c99bffc538de01866f74cfec4819dc467f3", amount: "75000000000000000000"},
@@ -90,10 +90,10 @@ contract("MerkleDrop - Claims testings", accounts => {
         ), "wrong dates");
     });
 
-    it("Case #1 - register multi-users MerkleDrop", async () => {
+    it("Case #1 - register multi-users Waterfall drop", async () => {
         const mintAmount = toWei("1000");
-        const token = await tokensFactory.new(mintAmount, {from: tokenProvider});
-        const drop = await merkleFactory.new({from:tokenProvider});
+        const token = await tokenFactory.new(mintAmount, {from: tokenProvider});
+        const drop = await Waterfall.new({from:tokenProvider});
         await token.approve(drop.address, mintAmount, {from: tokenProvider});
         const userSet = [
             {account: "0x00000a86986e8ba3557992df02883e4a646e8f25", amount: "50000000000000000000"},
@@ -119,11 +119,11 @@ contract("MerkleDrop - Claims testings", accounts => {
         });
     });
 
-    it("Case #1.1 - register multi-users multi-MerkleDrop", async () => {
+    it("Case #1.1 - register multi-users & multi-drops", async () => {
         const mintAmount = toWei("1000");
-        const token1 = await tokensFactory.new(mintAmount, {from: tokenProvider});
-        const token2 = await tokensFactory.new(mintAmount, {from: tokenProvider});
-        const drop = await merkleFactory.new({from:tokenProvider});
+        const token1 = await tokenFactory.new(mintAmount, {from: tokenProvider});
+        const token2 = await tokenFactory.new(mintAmount, {from: tokenProvider});
+        const drop = await Waterfall.new({from:tokenProvider});
         await token1.approve(drop.address, mintAmount, {from: tokenProvider});
         await token2.approve(drop.address, mintAmount, {from: tokenProvider});
         const userSet1 = [
@@ -173,10 +173,10 @@ contract("MerkleDrop - Claims testings", accounts => {
         });
     });
 
-    it("Case #1.2 - register some token to multi-drops", async () => {
+    it("Case #1.2 - register some token to have multi-drops", async () => {
         const mintAmount = toWei("1000");
-        const token = await tokensFactory.new(mintAmount, {from: tokenProvider});
-        const drop = await merkleFactory.new({from:tokenProvider});
+        const token = await tokenFactory.new(mintAmount, {from: tokenProvider});
+        const drop = await Waterfall.new({from:tokenProvider});
         await token.approve(drop.address, mintAmount, {from: tokenProvider});
         const userSet1 = [
             {account: "0x00000a86986e8ba3557992df02883e4a646e8f25", amount: "50000000000000000000"},
@@ -230,9 +230,9 @@ contract("MerkleDrop - Claims testings", accounts => {
 
     it("Case #2 - identical leaf - claim are defined by proofs", async () => {
         const mintAmount = toWei("1000");
-        const token1 = await tokensFactory.new(mintAmount, {from: tokenProvider});
-        const token2 = await tokensFactory.new(mintAmount, {from: tokenProvider});
-        const drop = await merkleFactory.new({from:tokenProvider});
+        const token1 = await tokenFactory.new(mintAmount, {from: tokenProvider});
+        const token2 = await tokenFactory.new(mintAmount, {from: tokenProvider});
+        const drop = await Waterfall.new({from:tokenProvider});
         await token1.approve(drop.address, mintAmount, {from: tokenProvider});
         await token2.approve(drop.address, mintAmount, {from: tokenProvider});
         const userSet1 = [
@@ -274,10 +274,10 @@ contract("MerkleDrop - Claims testings", accounts => {
 
     });
 
-    it("Case #3 - claim out if time", async () => {
+    it("Case #3 - claim drop out if time", async () => {
         const mintAmount = toWei("1000");
-        const token = await tokensFactory.new(mintAmount, {from: tokenProvider});
-        const drop = await merkleFactory.new({from:tokenProvider});
+        const token = await tokenFactory.new(mintAmount, {from: tokenProvider});
+        const drop = await Waterfall.new({from:tokenProvider});
         await token.approve(drop.address, mintAmount, {from: tokenProvider});
         const userSet = [
             {account: "0x00000a86986e8ba3557992df02883e4a646e8f25", amount: "50000000000000000000"},
@@ -302,8 +302,8 @@ contract("MerkleDrop - Claims testings", accounts => {
 
     it("Case #4 - reverts if reuse claim", async () => {
         const mintAmount = toWei("1000");
-        const token = await tokensFactory.new(mintAmount, {from: tokenProvider});
-        const drop = await merkleFactory.new({from:tokenProvider});
+        const token = await tokenFactory.new(mintAmount, {from: tokenProvider});
+        const drop = await Waterfall.new({from:tokenProvider});
         await token.approve(drop.address, mintAmount, {from: tokenProvider});
         const userSet = [
             {account: "0x00000a86986e8ba3557992df02883e4a646e8f25", amount: "50000000000000000000"},
@@ -326,8 +326,8 @@ contract("MerkleDrop - Claims testings", accounts => {
 
     it("Case #5 - revert if fake claim", async () => {
         const mintAmount = toWei("1000");
-        const token = await tokensFactory.new(mintAmount, {from: tokenProvider});
-        const drop = await merkleFactory.new({from:tokenProvider});
+        const token = await tokenFactory.new(mintAmount, {from: tokenProvider});
+        const drop = await Waterfall.new({from:tokenProvider});
         await token.approve(drop.address, mintAmount, {from: tokenProvider});
         const userSet = [
             {account: "0x00000a86986e8ba3557992df02883e4a646e8f25", amount: "50000000000000000000"},
@@ -349,8 +349,8 @@ contract("MerkleDrop - Claims testings", accounts => {
 
     it("Case #6 - revert if provider don't have balance to transfer", async () => {
         const mintAmount = 1;
-        const token = await tokensFactory.new(mintAmount, {from: tokenProvider});
-        const drop = await merkleFactory.new({from:tokenProvider});
+        const token = await tokenFactory.new(mintAmount, {from: tokenProvider});
+        const drop = await Waterfall.new({from:tokenProvider});
         await token.approve(drop.address, toWei("1000"), {from: tokenProvider});
         const userSet = [
             {account: "0x00000a86986e8ba3557992df02883e4a646e8f25", amount: "50000000000000000000"},
@@ -372,8 +372,8 @@ contract("MerkleDrop - Claims testings", accounts => {
 
     it("Case #7 - check events", async () => {
         const mintAmount = toWei("1000");
-        const token = await tokensFactory.new(mintAmount, {from: tokenProvider});
-        const drop = await merkleFactory.new({from:tokenProvider});
+        const token = await tokenFactory.new(mintAmount, {from: tokenProvider});
+        const drop = await Waterfall.new({from:tokenProvider});
         await token.approve(drop.address, mintAmount, {from: tokenProvider});
         const userSet = [
             {account: "0x00000a86986e8ba3557992df02883e4a646e8f25", amount: "50000000000000000000"},

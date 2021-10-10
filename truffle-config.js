@@ -69,7 +69,7 @@ module.exports = {
   // Set default mocha options here, use special reporters etc.
   mocha: {
     reporter: 'eth-gas-reporter',
-    reporterOptions: { showTimeSpent: true }
+    reporterOptions: { showTimeSpent: true, excludeContracts: ["mockERC20"] }
   },
 
   // Configure your compilers
