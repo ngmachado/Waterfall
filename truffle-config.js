@@ -4,13 +4,15 @@ require("dotenv").config();
 module.exports = {
   networks: {
     goerli: {
-      provider: () => new HDWalletProvider(
-        process.env.MNEMONIC,
-        process.env.PROVIDER,
-        0, //address_index
-        10, // num_addresses
-        true // shareNonce
-      ),
+      provider: () => {
+        new HDWalletProvider(
+          process.env.MNEMONIC,
+          process.env.PROVIDER,
+          0, //address_index
+          10, // num_addresses
+          true // shareNonce
+        );
+      },
       network_id: 5,
       gas: 8e6,
       gasPrice: + process.env.GAS_PRICE || 10e9,
@@ -18,7 +20,22 @@ module.exports = {
       timeoutBlocks: 50,
       skipDryRun: false
     },
-
+    polygon: {
+      provider: () => {
+        new HDWalletProvider(
+          process.env.POLYGON_MNEMONIC,
+          process.env.POLYGON_PROVIDER_URL,
+          0, //address_index
+          10, // num_addresses
+          true // shareNonce
+        );
+      },
+      network_id: 137,
+      gas: 8e6,
+      gasPrice: 50e9,
+      timeoutBlocks: 75,
+      skipDryRun: false,
+    },
     mumbai: {
       provider: () =>
         new HDWalletProvider(
@@ -71,17 +88,20 @@ module.exports = {
     reporter: 'eth-gas-reporter',
     reporterOptions: { showTimeSpent: true, excludeContracts: ["mockERC20"] }
   },
-
   // Configure your compilers
   compilers: {
     solc: {
-      version: "0.8.0",    // Fetch exact version from solc-bin (default: truffle's version)
-      settings: {          // See the solidity docs for advice about optimization and evmVersion
+      version: "0.8.9",
+      settings: {
         optimizer: {
           enabled: false,
           runs: 20000
         }
       }
     }
+  },
+  api_keys: {
+    etherscan: process.env.ETHERSCAN_API_KEY,
+    polygonscan: process.env.POLYGONSCAN_API_KEY,
   },
 };

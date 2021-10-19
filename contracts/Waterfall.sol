@@ -1,32 +1,40 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.0;
+pragma solidity 0.8.9;
 
 import "./libraries/MerkleProofLib.sol";
 import "./interfaces/IWaterfall.sol";
 import "./interfaces/IERC20.sol";
 
+/**
+ * @dev Waterfall implementation.
+ *
+ * author: Nuno Axe
+ * github: https://github.com/ngmachado/waterfall
+ *
+ */
 contract Waterfall is IWaterfall {
-
     struct Config {
         IERC20 token;
-        address tokensProvider;
         uint96 startTime;
+        address tokensProvider;
         uint96 endTime;
         mapping(uint256 => uint256) claimed;
     }
 
+    // @dev Config for the merkleRoot.
     mapping(bytes32 => Config) public config;
 
+    // @dev IWaterfall.newDistribuition implementation.
     function newDistribuition(
         bytes32 merkleRoot,
         address token,
         uint96 startTime,
         uint96 endTime
-    )
-        external
-        override
-    {
-        require(address(config[merkleRoot].token) == address(0), "merkleRoot already register");
+    ) external override {
+        require(
+            address(config[merkleRoot].token) == address(0),
+            "merkleRoot already register"
+        );
         require(merkleRoot != bytes32(0), "empty root");
         require(token != address(0), "empty token");
         require(startTime < endTime, "wrong dates");
@@ -36,10 +44,22 @@ contract Waterfall is IWaterfall {
         _config.tokensProvider = msg.sender;
         _config.startTime = startTime;
         _config.endTime = endTime;
-        emit NewDistribuition(msg.sender, token, merkleRoot, startTime, endTime);
+        emit NewDistribuition(
+            msg.sender,
+            token,
+            merkleRoot,
+            startTime,
+            endTime
+        );
     }
 
-    function isClaimed(bytes32 merkleRoot, uint256 index) public view override returns (bool) {
+    // @dev IWaterfall.isClaimed implementation.
+    function isClaimed(bytes32 merkleRoot, uint256 index)
+        public
+        view
+        override
+        returns (bool)
+    {
         uint256 claimedWordIndex = index / 256;
         uint256 claimedBitIndex = index % 256;
         uint256 claimedWord = config[merkleRoot].claimed[claimedWordIndex];
@@ -47,20 +67,29 @@ contract Waterfall is IWaterfall {
         return claimedWord & mask == mask;
     }
 
+    // @dev Set index as claimed on specific merkleRoot
     function _setClaimed(bytes32 merkleRoot, uint256 index) private {
         uint256 claimedWordIndex = index / 256;
         uint256 claimedBitIndex = index % 256;
-        config[merkleRoot].claimed[claimedWordIndex] = config[merkleRoot].claimed[claimedWordIndex] | (1 << claimedBitIndex);
+        config[merkleRoot].claimed[claimedWordIndex] =
+            config[merkleRoot].claimed[claimedWordIndex] |
+            (1 << claimedBitIndex);
     }
 
-    function claim(uint256 index, address account, uint256 amount, bytes32[] calldata merkleProofs) external override {
+    // @dev IWaterfall.claim implementation.
+    function claim(
+        uint256 index,
+        address account,
+        uint256 amount,
+        bytes32[] calldata merkleProofs
+    ) external override {
         bytes32 leaf = keccak256(abi.encodePacked(index, account, amount));
         bytes32 merkleRoot = MerkleProof.getMerkleRoot(merkleProofs, leaf);
 
         require(
-            config[merkleRoot].startTime < block.timestamp
-            && config[merkleRoot].endTime >= block.timestamp
-            ,"out of time / wrong root"
+            config[merkleRoot].startTime < block.timestamp &&
+                config[merkleRoot].endTime >= block.timestamp,
+            "out of time / wrong root"
         );
 
         require(!isClaimed(merkleRoot, index), "already claimed");
@@ -71,8 +100,9 @@ contract Waterfall is IWaterfall {
                 config[merkleRoot].tokensProvider,
                 account,
                 amount
-            )
-        , "transfer failed");
+            ),
+            "transfer failed"
+        );
         emit Claimed(account, address(config[merkleRoot].token), amount);
     }
 }
