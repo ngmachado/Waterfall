@@ -3,28 +3,35 @@
 [![Coverage Status](https://coveralls.io/repos/github/ngmachado/Waterfall/badge.svg?branch=master)](https://coveralls.io/github/ngmachado/Waterfall?branch=master)
 
 ---
-## Intro
+## Introduction
 
-With Waterfall is easy to make Merkle Tree distribuition without coding. For each supported EVM network exist one Waterfall that anyone can register one distribuition.
+With Waterfall is easy to make Merkle Tree Distribuition without having to code. For each supported EVM network exist one Waterfall that anyone can register one or many distribuition.
 
-Each distribuition is bound to a set of time, soo you can decide how much time will the distribuion run.
+Each distribuition __can__ be bound to a time interval, this means that you can define the start and end date for your air drop.
 
-Waterfall don't manage funds, for each valid claim will this contract will perform a ERC20 transferFrom from the tokenProvider account.
+Waterfall don't manage any funds, for each valid claim _(user asking for tokens)_ this contract will perform a ERC20 `transferFrom` from the tokenProvider account.
 
-**Waterfall contract don't have administrative powers**
+Waterfall is capable of managing differents drops even for the same token at the same time. _(Recursive drops)_
 
-## How to use - main steps
+Anyone can make a claim to a specific user, this makes easier if you want to implement some type of meta-transaction and pay the user gas fees.
 
-- Generete data a drop, follow a specific format (see detail).
+**Waterfall contract don't have or need administrative powers**
+
+## How to use - conceptual steps
+
+- Generete drop data, follow a specific format (see detail).
 - Generate the merkle tree root based with drop data.
 - In your token contract `approve` Waterfall address with the total amount of tokens to be transfer.
 - Register the merkle drop information in the smart contract: merkleRoot, token, tokensProvider, startTime, endTime.
+- Publish the merkle tree data, each user need this information to make a claim.
 
 ## Details and concepts
 
 `drop` - A set of users can claim a particular token.
 
 `merkleRoot` - generated from user set of data, each singular drop is represent in a leaf.
+
+`user set data` - Information needed to make a claim.
 
 `leaf` - user claim that follow the format: `index account amount`
 
@@ -36,8 +43,9 @@ Waterfall don't manage funds, for each valid claim will this contract will perfo
 
 ## Next steps
 
+- Make all the steps automatic asking only drop data set.
+- Create scripts to enable automatic interactions from different protocols.
 - Create a web interface to operate the smart contract.
-- Make more gas optimizations.
 - Make a proper audit to this project.
 
 ## Q/A
@@ -56,17 +64,19 @@ Merkle distributions avoid spamming, the user have to claim the tokens he wants.
 
 (A): Yes.
 
-(Q): Can i use merkle-drop to make different drops from the **same token and same user set data**?
+(Q): Can i use Waterfall to make different drops from the **same token and same user set data**?
 
-(A): No, this version is only capable of making one drop per _user set data_, if the data is different, then you can make multi drops from the same token.
+(A): No, this version is only capable of making one drop per _user set data_, if the data is different, then you can make multi drops from the same token. _Any change in data will do the job._
 
 (Q): Someone register my token blocking me from making my own drop, can you solve that?
 
-(A): No, merkle-drop is **literally a permissionless system**. One way to overcome that is to use different set of data, generating a different merkleRoot.
+(A):  No, Waterfall is **literally a permissionless system**.
+
+_This is very unlikly to happen, but in the case you are dealing with this problem, just change any data point on the `data set`. Any change on this file will generate a new merkleRoot._
 
 (Q): If `tokenProvider` removes the allowance in the middle of a drop?
 
-(A): The claim will revert when trying to transfer the token.
+(A): The claim will revert when trying to transfer the token. We don't ask to lock tokens in Waterfall contracts.
 
 ## Limitations
 
