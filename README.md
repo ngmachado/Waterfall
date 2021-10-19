@@ -25,6 +25,13 @@ Anyone can make a claim to a specific user, this makes easier if you want to imp
 - Register the merkle drop information in the smart contract: merkleRoot, token, tokensProvider, startTime, endTime.
 - Publish the merkle tree data, each user need this information to make a claim.
 
+## Network Directory
+
+| Network | Address                                   |
+|---------|-------------------------------------------|
+| Polygon | [0x8b6e73325F8c4bEEC9004eF4F6613de59Bb7C156](https://polygonscan.com/address/0x8b6e73325F8c4bEEC9004eF4F6613de59Bb7C156#code)|
+| xDAI    | [0x8b6e73325F8c4bEEC9004eF4F6613de59Bb7C156](https://blockscout.com/xdai/mainnet/address/0x8b6e73325F8c4bEEC9004eF4F6613de59Bb7C156)|
+
 ## Details and concepts
 
 `drop` - A set of users can claim a particular token.
