@@ -3,6 +3,14 @@
 [![Coverage Status](https://coveralls.io/repos/github/ngmachado/Waterfall/badge.svg?branch=master)](https://coveralls.io/github/ngmachado/Waterfall?branch=master)
 
 ---
+
+<p align="center">
+  <img src="https://i.imgur.com/qVtx2.gif" alt="waterfall image" width="550px"/>
+</p>
+
+
+
+---
 ## Introduction
 
 With Waterfall is easy to make Merkle Tree Distribuition without having to code. For each supported EVM network exist one Waterfall that anyone can register one or many distribuition.
@@ -103,3 +111,4 @@ The merkle tree generated from given data can generate a unbalanced tree. We are
 
 - [merkle-distributor](https://github.com/Uniswap/merkle-distributor)
 - [merkletreejs](https://github.com/miguelmota/merkletreejs)
+- [image](http://www.effectgames.com/)
