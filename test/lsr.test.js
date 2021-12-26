@@ -47,7 +47,8 @@ contract("LSR - Starting streams", accounts => {
     it("Case #1 - deploy and start stream", async () => {
         const lsr = await LSR.new();
         await airx.transfer(lsr.address, toWei("10"), {from: tokenProvider});
-        await lsr.init(sf.host.address, sf.agreements.cfa.address, airx.address, accounts[5], "100000000000");
+        const encodeOPStartStream = await sf.agreements.cfa.contract.methods.createFlow(airx.address, accounts[5], "100000000000", "0x").encodeABI();
+        await lsr.init(sf.host.address, sf.agreements.cfa.address, encodeOPStartStream);
         const flow = await sf.cfa.getFlow({
           superToken: airx.address,
           sender: lsr.address,
@@ -56,5 +57,4 @@ contract("LSR - Starting streams", accounts => {
         assert.equal(flow.flowRate.toString(), "100000000000", "receiver not getting flow");
         assert.equal((await web3.eth.getCode(lsr.address)).toString(), "0x", "LSR not removed");
     });
-
 });
